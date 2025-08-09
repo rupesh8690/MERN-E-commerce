@@ -1,5 +1,7 @@
 import express from "express"
 import authRoutes from "./routes/auth.route.js"
+import productRoutes from "./routes/product.route.js"
+
 
 import dotenv from "dotenv"
 dotenv.config()
@@ -16,6 +18,7 @@ app.use(express.json()); //The line app.use(express.json()) is used in Express.j
 app.use(cookieParser())
 
 app.use("/api/auth",authRoutes);
+app.use("/api/product",productRoutes);
 
 
 app.listen(PORT,()=>{
