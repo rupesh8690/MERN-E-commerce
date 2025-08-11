@@ -111,6 +111,8 @@ export const deleteProducts = async(req,res) =>{
 
 export const getRecommendedProducts= async(req,res) =>{
    try{
+    // * 1. Uses MongoDB's aggregation pipeline with `$sample` to select 3 random products.
+    // Uses `$project` to include only required fields: _id, name, description, image, and price
        const product= await Product.aggregate([
         {
             $sample:{size:3}
@@ -139,6 +141,9 @@ export const getRecommendedProducts= async(req,res) =>{
 export const getProductByCategory= async(req,res) =>{
     const {category} = req.params;
     try{
+        const products= await Product.find({category});
+        res.json({products});
+        
 
     }catch(error){
         console.log("Error in getProductByCategory controller",error.message);

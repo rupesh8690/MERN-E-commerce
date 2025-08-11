@@ -1,6 +1,7 @@
 import express from "express"
 import authRoutes from "./routes/auth.route.js"
 import productRoutes from "./routes/product.route.js"
+import cartRoutes from "./routes/cart.route.js";
 
 
 import dotenv from "dotenv"
@@ -19,7 +20,7 @@ app.use(cookieParser())
 
 app.use("/api/auth",authRoutes);
 app.use("/api/product",productRoutes);
-
+app.use("/api/cart",cartRoutes);
 
 app.listen(PORT,()=>{
     console.log("server is running on http://localhost:"+PORT)
